@@ -11,6 +11,15 @@ toevoegen. Daarom is er ook geen Service & repo voor de user-rollen geprogrammee
 database te krijgen is via SQL statements in dit bestand.
 
  */
-INSERT INTO role(name) VALUES('ROLE_USER');
-INSERT INTO role(name) VALUES('ROLE_MODERATOR');
-INSERT INTO role(name) VALUES('ROLE_ADMIN');
+INSERT INTO role(name) VALUES ('ROLE_USER');
+INSERT INTO role(name) VALUES ('ROLE_MODERATOR');
+INSERT INTO role(name) VALUES ('ROLE_ADMIN');
+
+INSERT INTO app_user (username, email, password) VALUES ('emieldejong@xs4all.nl', 'emieldejong@xs4all.nl', '$2a$10$w1a.lrsfLJ1su/dsySdVROoLwb5FnO3xHmWXcvW005274IF5XD.me');
+
+-- INSERT INTO app_user (username, email, password)
+-- VALUES ('talcanetti@xs4all.nl', 'talcanetti@xs4all.nl', 'password');
+
+
+
+

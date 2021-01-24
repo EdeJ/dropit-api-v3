@@ -11,8 +11,8 @@ import java.io.IOException;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("files")
-public class UploadController {
+@RequestMapping("api/files")
+public class FileController {
 
     @Autowired
     FileUploadService fileUploadService;
