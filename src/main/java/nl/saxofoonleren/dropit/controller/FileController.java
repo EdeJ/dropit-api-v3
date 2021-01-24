@@ -1,5 +1,7 @@
 package nl.saxofoonleren.dropit.controller;
 
+import nl.saxofoonleren.dropit.domain.Demo;
+import nl.saxofoonleren.dropit.repository.DemoRepository;
 import nl.saxofoonleren.dropit.service.FileUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,10 @@ public class FileController {
     @Autowired
     FileUploadService fileUploadService;
 
+    @Autowired
+    DemoRepository demoRepository;
+
+
     @PostMapping
     public ResponseEntity<Object> uploadFile(@RequestParam("file") MultipartFile file,
                                              @RequestParam("fileName") String fileName,
@@ -24,6 +30,10 @@ public class FileController {
     ) throws IOException {
 
         fileUploadService.uploadFile(file);
+        Demo demo = new Demo(fileName, fileTitel, "Frank Sinatra");
+        demoRepository.save(demo);
+
+
         System.out.println(fileName + " " + fileTitel);
 //        return new ResponseEntity<>("File is uploaded successfully", HttpStatus.OK);
         return new ResponseEntity<>("File is uploaded successfully", HttpStatus.OK);
