@@ -15,10 +15,11 @@ INSERT INTO role(name) VALUES ('ROLE_USER');
 INSERT INTO role(name) VALUES ('ROLE_MODERATOR');
 INSERT INTO role(name) VALUES ('ROLE_ADMIN');
 
+-- password: geheim
 INSERT INTO app_user (username, email, password) VALUES ('emieldejong@xs4all.nl', 'emieldejong@xs4all.nl', '$2a$10$w1a.lrsfLJ1su/dsySdVROoLwb5FnO3xHmWXcvW005274IF5XD.me');
+-- password: password
+INSERT INTO app_user (username, email, password) VALUES ('talcanetti@xs4all.nl', 'talcanetti@xs4all.nl', '$2a$10$2W8DY8K42QCub6QnVeF0rOQe7uT9LiwZK87aAEgW9rZ8lQOZPxcmq');
 
--- INSERT INTO app_user (username, email, password)
--- VALUES ('talcanetti@xs4all.nl', 'talcanetti@xs4all.nl', 'password');
 
 
 

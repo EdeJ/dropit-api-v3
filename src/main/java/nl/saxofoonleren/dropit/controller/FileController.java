@@ -1,8 +1,9 @@
 package nl.saxofoonleren.dropit.controller;
 
 import nl.saxofoonleren.dropit.domain.Demo;
-import nl.saxofoonleren.dropit.repository.DemoRepository;
-import nl.saxofoonleren.dropit.service.FileUploadService;
+import nl.saxofoonleren.dropit.domain.User;
+import nl.saxofoonleren.dropit.repository.UserRepository;
+import nl.saxofoonleren.dropit.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,31 +12,27 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("api/files")
+@RequestMapping("/api/files")
 public class FileController {
 
     @Autowired
-    FileUploadService fileUploadService;
+    FileService fileService;
 
     @Autowired
-    DemoRepository demoRepository;
-
+    UserRepository userRepository;
 
     @PostMapping
     public ResponseEntity<Object> uploadFile(@RequestParam("file") MultipartFile file,
-                                             @RequestParam("fileName") String fileName,
-                                             @RequestParam("fileTitle") String fileTitel
-    ) throws IOException {
+                                             @RequestParam("userId") long userId,
+                                             Demo demo) throws IOException {
 
-        fileUploadService.uploadFile(file);
-        Demo demo = new Demo(fileName, fileTitel, "Frank Sinatra");
-        demoRepository.save(demo);
+        User user = userRepository.findById(userId).orElse(null);
+            demo.setUser(user);
 
-
-        System.out.println(fileName + " " + fileTitel);
-//        return new ResponseEntity<>("File is uploaded successfully", HttpStatus.OK);
+        fileService.uploadFile(file, demo);
         return new ResponseEntity<>("File is uploaded successfully", HttpStatus.OK);
     }
 
@@ -45,3 +42,21 @@ public class FileController {
 //        return new ResponseEntity<>("File is uploaded successfully", HttpStatus.OK);
 //    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

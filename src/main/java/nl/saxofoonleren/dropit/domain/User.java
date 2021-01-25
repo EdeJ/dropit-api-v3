@@ -19,16 +19,8 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(
-            strategy= GenerationType.AUTO,
-            generator="native"
-    )
-    @GenericGenerator(
-            name = "native",
-            strategy = "native"
-    )
-    @Column(columnDefinition = "serial")
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long userId;
     private String username;
     private String email;
     @JsonIgnore
@@ -51,12 +43,8 @@ public class User {
     }
 
     public long getId() {
-        return id;
+        return userId;
     }
-
-//    public void setId(long id) {
-//        this.id = id;
-//    }
 
     public String getUsername() {
         return username;
@@ -88,5 +76,16 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 }
