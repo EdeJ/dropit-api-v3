@@ -38,8 +38,7 @@ public class Demo {
     }
 
     public void setFileName(String fileName) {
-        UUID uuid=UUID.randomUUID();
-        this.fileName = uuid + "-" + fileName.toLowerCase().replace(' ', '-');
+    this.fileName = fileName;
     }
 
     public String getSongTitle() {

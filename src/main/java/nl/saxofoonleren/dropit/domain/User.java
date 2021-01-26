@@ -3,15 +3,8 @@ package nl.saxofoonleren.dropit.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -25,6 +18,9 @@ public class User {
     private String email;
     @JsonIgnore
     private String password;
+
+//    @OneToMany
+//    private List<Demo> demos;
 
     @ManyToMany
     @JoinTable (name = "user_role",
@@ -77,6 +73,14 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
+//    public List<Demo> getDemos() {
+//        return demos;
+//    }
+//
+//    public void setDemos(List<Demo> demos) {
+//        this.demos = demos;
+//    }
 
     @Override
     public String toString() {

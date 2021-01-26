@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
 
 @Service
 public class FileService {
@@ -18,6 +19,8 @@ public class FileService {
     public static String uploadDirectory = System.getProperty("user.dir") + "/uploads/";
 
     public void uploadFile(MultipartFile file, Demo demo) throws IOException {
+        UUID uuid=UUID.randomUUID();
+        demo.setFileName(uuid + ".mp3");
         file.transferTo(new File(uploadDirectory + demo.getFileName()));
         demoRepository.save(demo);
     }
