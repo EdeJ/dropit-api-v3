@@ -16,9 +16,18 @@ INSERT INTO role(name) VALUES ('ROLE_MODERATOR');
 INSERT INTO role(name) VALUES ('ROLE_ADMIN');
 
 -- password: geheim
+-- role: USER
 INSERT INTO app_user (username, email, password) VALUES ('emieldejong@xs4all.nl', 'emieldejong@xs4all.nl', '$2a$10$w1a.lrsfLJ1su/dsySdVROoLwb5FnO3xHmWXcvW005274IF5XD.me');
+INSERT INTO user_role (user_id, role_id) VALUES (1, 1);
+
 -- password: password
+-- role: ADMIN
 INSERT INTO app_user (username, email, password) VALUES ('talcanetti@xs4all.nl', 'talcanetti@xs4all.nl', '$2a$10$2W8DY8K42QCub6QnVeF0rOQe7uT9LiwZK87aAEgW9rZ8lQOZPxcmq');
+INSERT INTO user_role (user_id, role_id) VALUES (2, 3);
+INSERT INTO user_role (user_id, role_id) VALUES (2, 1);
+
+
+INSERT INTO comment (message) VALUES ('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere dolorum odio error a doloremque ad quasi illo vitae quod quo al');
 
 
 

@@ -122,6 +122,7 @@ public class AuthorizationService {
         }
 
         user.setRoles(roles);
+        System.out.println("VIEW user: " + user);
         userRepository.save(user);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));

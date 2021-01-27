@@ -18,6 +18,9 @@ public class Demo {
     private String songTitle;
     private String artist;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Comment comment;
+
     public Demo() {
     }
 
@@ -55,6 +58,14 @@ public class Demo {
 
     public void setArtist(String artist) {
         this.artist = artist;
+    }
+
+    public Comment getComment() {
+        return comment;
+    }
+
+    public void setComment(Comment comment) {
+        this.comment = comment;
     }
 
     @Override

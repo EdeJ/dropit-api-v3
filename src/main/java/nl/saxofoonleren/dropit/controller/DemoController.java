@@ -32,6 +32,7 @@ public class DemoController {
     @GetMapping("/{demoId}")
     public ResponseEntity<?> getDemoById(@PathVariable("demoId") long demoId) throws IOException {
         Demo demo = demoRepository.findById(demoId).orElse(null);
+        System.out.println(demo);
         return ResponseEntity.ok(demo);
     }
 
