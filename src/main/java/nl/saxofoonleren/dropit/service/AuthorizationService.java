@@ -9,8 +9,8 @@ import nl.saxofoonleren.dropit.payload.response.JwtResponse;
 import nl.saxofoonleren.dropit.payload.response.MessageResponse;
 import nl.saxofoonleren.dropit.repository.RoleRepository;
 import nl.saxofoonleren.dropit.repository.UserRepository;
-import nl.saxofoonleren.dropit.service.security.jwt.AuthEntryPointJwt;
-import nl.saxofoonleren.dropit.service.security.jwt.JwtUtils;
+import nl.saxofoonleren.dropit.security.jwt.AuthEntryPointJwt;
+import nl.saxofoonleren.dropit.security.jwt.JwtUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

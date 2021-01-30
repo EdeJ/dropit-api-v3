@@ -16,11 +16,11 @@ public class CommentController {
     @Autowired
     private DemoRepository demoRepository;
 
-//    @GetMapping("/{demoId}")
-//    public ResponseEntity<?> getCommentByDemoId(@PathVariable("demoId") long demoId) throws IOException {
-//        Demo demo = demoRepository.findById(demoId).orElse(null);
-//        return ResponseEntity.ok(null);
-//    }
+    @GetMapping("/{demoId}")
+    public ResponseEntity<?> getCommentByDemoId(@PathVariable("demoId") long demoId) throws IOException {
+        Demo demo = demoRepository.findById(demoId).orElse(null);
+        return ResponseEntity.ok(null);
+    }
 
 
 //    @GetMapping("/{commentId}")

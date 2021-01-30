@@ -19,13 +19,18 @@ public class User {
     @JsonIgnore
     private String password;
 
-//    @OneToMany
-//    private List<Demo> demos;
+    //
+//    @JoinColumn(name="demo_id", referencedColumnName = "demo_id")
+    @OneToMany
+    @JsonIgnore
+    @JoinColumn(name = "user_id")
+    private List<Demo> demos;
+
 
     @ManyToMany
-    @JoinTable (name = "user_role",
-    joinColumns = @JoinColumn(name = "user_id"),
-    inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),      //TODO check dit!
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
     public User() {
@@ -74,13 +79,13 @@ public class User {
         this.roles = roles;
     }
 
-//    public List<Demo> getDemos() {
-//        return demos;
-//    }
-//
-//    public void setDemos(List<Demo> demos) {
-//        this.demos = demos;
-//    }
+    public List<Demo> getDemos() {
+        return demos;
+    }
+
+    public void setDemos(List<Demo> demos) {
+        this.demos = demos;
+    }
 
     @Override
     public String toString() {
