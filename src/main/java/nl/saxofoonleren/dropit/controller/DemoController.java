@@ -38,14 +38,6 @@ public class DemoController {
         return ResponseEntity.ok("demo " + demoId+ " deleted");
     }
 
-//    @GetMapping("/by-user/{userId}")
-//    public ResponseEntity<?> getDemosByUserId(@PathVariable("userId") long userId) throws IOException {
-//        User user = userRepository.findById(userId).orElse(null);
-//       List<Demo> demos = demoRepository.findDemosByUser(user);
-//        List<Demo> demos = demoRepository.findDemosByUserId(userId);
-//        return ResponseEntity.ok(null);
-//    }
-
 }
 
 
