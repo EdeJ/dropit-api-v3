@@ -2,15 +2,14 @@ package nl.saxofoonleren.dropit.controller;
 
 import nl.saxofoonleren.dropit.domain.Demo;
 import nl.saxofoonleren.dropit.domain.User;
-import nl.saxofoonleren.dropit.repository.UserRepository;
 import nl.saxofoonleren.dropit.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -30,5 +29,15 @@ public class UserController {
     public ResponseEntity<?> getDemosByUserId(@PathVariable("userId") long userId) throws IOException {
         List<Demo> demos = userService.getDemosByUserId(userId);
         return ResponseEntity.ok(demos);
+    }
+
+    @GetMapping("/check-up/{email}")
+    public ResponseEntity<?> getUserByUsername(@PathVariable("email") String email) throws IOException {
+        User user = userService.getUserByUsername(email);
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(user.getEmail(), HttpStatus.OK);
+        //TODO nog even goed controleren
     }
 }

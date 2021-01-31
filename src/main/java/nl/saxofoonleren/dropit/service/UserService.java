@@ -27,9 +27,17 @@ public class UserService {
 
     public List<Demo> getDemosByUserId(long userId) {
         Optional<User> user = userRepository.findById(userId);
-        if(!user.isPresent()) {
+        if (!user.isPresent()) {
             throw new UserNotFoundException(userId);
         }
         return user.get().getDemos();
+    }
+
+    public User getUserByUsername(String email) {
+        Optional<User> user = userRepository.findByUsername(email);
+        if (!user.isPresent()) {
+            throw new UserNotFoundException(0);
+        }
+        return user.get();
     }
 }

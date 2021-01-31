@@ -18,8 +18,9 @@ public class SignupRequest {
 
     private Set<String> role;
 
+    // TODO error als wachtwoord te kort is !!!!!!!
     @NotBlank
-    @Size(min = 6, max = 40)
+//    @Size(min = 6, max = 40)
     private String password;
 
     public String getUsername() {
