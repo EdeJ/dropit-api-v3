@@ -14,7 +14,7 @@ import java.util.UUID;
 public class FileService {
 
     @Autowired
-    DemoRepository demoRepository;
+    DemoService demoService;
 
     public static String uploadDirectory = System.getProperty("user.dir") + "/uploads/";
 
@@ -22,6 +22,22 @@ public class FileService {
         UUID uuid=UUID.randomUUID();
         demo.setFileName(uuid + ".mp3");
         file.transferTo(new File(uploadDirectory + demo.getFileName()));
-        demoRepository.save(demo);
+        demoService.saveDemo(demo);
+    }
+
+    public void deleteById(long demoId) {
+        Demo demo = demoService.getDemoById(demoId);
+        String fileName = demo.getFileName();
+
+        // The test audio file (audio-test-file.mp3) will never be deleted!
+        // Every fresh start wil have this audio test file in the upload folder.
+        if (!fileName.equals("audio-test-file.mp3")) {
+            File audioFile = new File(uploadDirectory + fileName);
+            if (audioFile.delete()) {
+                System.out.println("Deleted the file: " + audioFile.getName());
+            } else {
+                System.out.println("Failed to delete the file.");
+            }
+        }
     }
 }
