@@ -1,5 +1,7 @@
 package nl.saxofoonleren.dropit.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,15 +13,11 @@ public class Comment {
     private long commentId;
     String message;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    private Demo demo;
-
+    @OneToOne
+    @JsonIgnore
+    private Demo demo;
 
     public Comment() {
-    }
-
-    public Comment(String message) {
-        this.message = message;
     }
 
     public long getCommentId() {
@@ -38,19 +36,20 @@ public class Comment {
         this.message = message;
     }
 
-//    public Demo getDemo() {
-//        return demo;
-//    }
-//
-//    public void setDemo(Demo demo) {
-//        this.demo = demo;
-//    }
+    public Demo getDemo() {
+        return demo;
+    }
+
+    public void setDemo(Demo demo) {
+        this.demo = demo;
+    }
 
     @Override
     public String toString() {
         return "Comment{" +
                 "commentId=" + commentId +
                 ", message='" + message + '\'' +
+                ", demo=" + demo +
                 '}';
     }
 }

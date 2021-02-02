@@ -19,11 +19,7 @@ public class User {
     @JsonIgnore
     private String password;
 
-    //
-//    @JoinColumn(name="demo_id", referencedColumnName = "demo_id")
-    @OneToMany
-    @JsonIgnore
-    @JoinColumn(name = "user_id")
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Demo> demos;
 
 
@@ -37,13 +33,23 @@ public class User {
 
     }
 
+    public void addDemo(Demo demo) {
+        demo.setUser(this);
+        this.demos.add(demo);
+    }
+
+    public void removeDemo(Demo demo) {
+        demo.setUser(null);
+        this.demos.remove(demo);
+    }
+
     public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
     }
 
-    public long getId() {
+    public long getUserId() {
         return userId;
     }
 
@@ -94,6 +100,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", demos=" + demos +
                 ", roles=" + roles +
                 '}';
     }

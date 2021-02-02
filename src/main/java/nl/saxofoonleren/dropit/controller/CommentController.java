@@ -1,7 +1,10 @@
 package nl.saxofoonleren.dropit.controller;
 
+import nl.saxofoonleren.dropit.domain.Comment;
 import nl.saxofoonleren.dropit.domain.Demo;
-import nl.saxofoonleren.dropit.repository.DemoRepository;
+import nl.saxofoonleren.dropit.payload.request.ReviewRequest;
+import nl.saxofoonleren.dropit.service.DemoService;
+import nl.saxofoonleren.dropit.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,12 +17,42 @@ import java.io.IOException;
 public class CommentController {
 
     @Autowired
-    private DemoRepository demoRepository;
+    CommentService commentService;
 
-    @GetMapping("/{demoId}")
-    public ResponseEntity<?> getCommentByDemoId(@PathVariable("demoId") long demoId) throws IOException {
-        Demo demo = demoRepository.findById(demoId).orElse(null);
-        return ResponseEntity.ok(null);
+    @Autowired
+    private DemoService demoService;
+
+
+    @GetMapping
+    public ResponseEntity<?> getAllComments() throws IOException {
+        return ResponseEntity.ok(commentService.getAllComments());
+    }
+
+    @PostMapping
+    public ResponseEntity<?> addNewComment(@RequestBody ReviewRequest reviewRequest) throws IOException {
+        Demo demo = demoService.getDemoById(reviewRequest.getDemoId());
+        Comment comment = new Comment();
+        comment.setMessage(reviewRequest.getMessage());
+        comment.setDemo(demo);
+        commentService.saveComment(comment);
+        return ResponseEntity.ok(comment);
+    }
+
+    @PutMapping(value = "/{commentId}")
+    public ResponseEntity<?> updateComment(@PathVariable("commentId") long commentId,@RequestBody ReviewRequest reviewRequest) {
+        Demo demo = demoService.getDemoById(reviewRequest.getDemoId());
+        Comment comment = new Comment();
+        comment.setCommentId(commentId);
+        comment.setMessage(reviewRequest.getMessage());
+        comment.setDemo(demo);
+        commentService.saveComment(comment);
+        return ResponseEntity.ok(comment);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<?> deleteCommentById(@PathVariable("id") long id) throws IOException {
+        commentService.deleteComment(id);
+        return ResponseEntity.ok("review " + id + " deleted");
     }
 
 

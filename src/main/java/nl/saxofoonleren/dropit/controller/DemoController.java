@@ -33,7 +33,6 @@ public class DemoController {
 
     @DeleteMapping("/{demoId}")
     public ResponseEntity<?> deleteDemo(@PathVariable("demoId") long demoId) throws IOException {
-
         demoService.deleteDemo(demoId);
         return ResponseEntity.ok("demo " + demoId+ " deleted");
     }
