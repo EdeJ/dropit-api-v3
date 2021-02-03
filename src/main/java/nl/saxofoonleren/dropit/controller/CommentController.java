@@ -28,6 +28,11 @@ public class CommentController {
         return ResponseEntity.ok(commentService.getAllComments());
     }
 
+    @GetMapping("/{commentId}")
+    public ResponseEntity<?> getCommentById(@PathVariable("commentId") long commentId) throws IOException {
+        return ResponseEntity.ok(commentService.getCommentById(commentId));
+    }
+
     @PostMapping
     public ResponseEntity<?> addNewComment(@RequestBody ReviewRequest reviewRequest) throws IOException {
         Demo demo = demoService.getDemoById(reviewRequest.getDemoId());
@@ -52,13 +57,7 @@ public class CommentController {
     @DeleteMapping("{id}")
     public ResponseEntity<?> deleteCommentById(@PathVariable("id") long id) throws IOException {
         commentService.deleteComment(id);
-        return ResponseEntity.ok("review " + id + " deleted");
+        return ResponseEntity.ok("comment " + id + " deleted");
     }
 
-
-//    @GetMapping("/{commentId}")
-//    public ResponseEntity<?> getCommentById(@PathVariable("commentId") long commentId) throws IOException {
-////        Demo demo = demoRepository.findById(demoId).orElse(null);
-//        return ResponseEntity.ok(null);
-//    }
 }

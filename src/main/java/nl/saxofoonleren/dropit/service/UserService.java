@@ -17,6 +17,10 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
     public User getUserById(long userId) {
         Optional<User> user = userRepository.findById(userId);
         if(!user.isPresent()) {

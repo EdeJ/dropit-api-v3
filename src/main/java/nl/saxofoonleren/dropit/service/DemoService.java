@@ -19,7 +19,11 @@ public class DemoService {
     FileService fileService;
 
     public List<Demo> getAllDemos() {
-        return demoRepository.findAll();
+        List<Demo> demos = demoRepository.findAllByOrderByUser();
+        for (Demo demo:demos) {
+            demo.getUser().setDemos(null);
+        }
+        return demos;
     }
 
     public Demo getDemoById(long demoId) {

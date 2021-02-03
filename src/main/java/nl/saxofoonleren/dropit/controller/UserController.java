@@ -19,6 +19,12 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @GetMapping
+    public ResponseEntity<?> getAllUsers() throws IOException {
+        List<User> users = userService.getAllUsers();
+        return ResponseEntity.ok(users);
+    }
+
     @GetMapping("/{userId}")
     public ResponseEntity<?> getUserById(@PathVariable("userId") long userId) throws IOException {
         User user = userService.getUserById(userId);

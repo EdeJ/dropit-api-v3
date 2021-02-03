@@ -3,7 +3,6 @@ package nl.saxofoonleren.dropit.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "demo")
@@ -21,8 +20,7 @@ public class Demo {
     private String songTitle;
     private String artist;
 
-    @OneToOne
-    @JoinColumn(name="id")
+    @OneToOne(mappedBy = "demo", cascade = CascadeType.ALL)
     private Comment comment;
 
     public Demo() {
