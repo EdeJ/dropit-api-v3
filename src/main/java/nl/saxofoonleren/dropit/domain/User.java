@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 @Entity
@@ -15,6 +17,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long userId;
     private String username;
+    private String firstName;
+    private String lastName;
     private String email;
     @JsonIgnore
     private String password;
@@ -30,7 +34,7 @@ public class User {
     private Set<Role> roles;
 
     public User() {
-
+this.demos = new ArrayList<>();
     }
 
     public void addDemo(Demo demo) {
@@ -49,6 +53,10 @@ public class User {
         this.password = password;
     }
 
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
     public long getUserId() {
         return userId;
     }
@@ -61,11 +69,33 @@ public class User {
         this.username = username;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
+        email = email.toLowerCase();
+        email = email.replaceAll(" ", "");
         this.email = email;
     }
 
@@ -98,6 +128,8 @@ public class User {
         return "User{" +
                 "userId=" + userId +
                 ", username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", demos=" + demos +
