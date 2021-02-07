@@ -1,6 +1,5 @@
 package nl.saxofoonleren.dropit.service;
 
-
 import nl.saxofoonleren.dropit.exceptions.DemoNotFoundException;
 import nl.saxofoonleren.dropit.repository.DemoRepository;
 import org.junit.jupiter.api.Assertions;
@@ -26,18 +25,20 @@ class DemoServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
-   @Test
+    @Test
     void serviceShouldThrowExceptionWhenDemoNotFoundById() {
 
-       // Arrange
-       Mockito.when(demoRepository.findById(1L)).thenReturn(Optional.empty());
+        // Arrange
+        Mockito.when(demoRepository.findById(1L)).thenReturn(Optional.empty());
 
-       // Assert
-       Assertions.assertThrows(DemoNotFoundException.class, () -> {
-           // Act
-           demoService.getDemoById(1L);;
-       });
-   }
+        // Assert
+        Assertions.assertThrows(DemoNotFoundException.class, () -> {
+
+            // Act
+            demoService.getDemoById(1L);
+
+        });
+    }
 
     @Test
     void deleteDemoShouldThrowExceptionWhenDemoNotExists() {
@@ -47,6 +48,7 @@ class DemoServiceTest {
 
         // Assert
         Assertions.assertThrows(DemoNotFoundException.class, () -> {
+
             // Act
             demoService.deleteDemo(1L);
 
@@ -62,28 +64,10 @@ class DemoServiceTest {
         Mockito.doReturn(true).when(demoRepository).existsById(1L);
         Mockito.doNothing().when(demoService).deleteDemo(1L);
 
-
-
-//       Mockito.doNothing().when(spy).deleteById(1L);
-//       Mockito.doNothing().when(demoService).deleteDemo(1L);
-//
-//        // Assert
+        // Act
         demoService.deleteDemo(1L);
 
+        // Assert
         Mockito.verify(spy).deleteById(1L);
     }
-
-//   @Test
-//    void verifyDeleteByIdMethodIsCalled() {
-//
-//       DemoRepository spy = Mockito.spy(demoRepository);
-//
-//       Mockito.doNothing().when(spy).deleteById(1L);
-////       Mockito.doNothing().when(demoService).deleteDemo(1L);
-//
-//        demoService.deleteDemo(1L);
-//
-//       Mockito.verify(spy).deleteById(1L);
-//
-//   }
 }

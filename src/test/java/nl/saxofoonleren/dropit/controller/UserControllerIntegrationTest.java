@@ -56,15 +56,18 @@ public class UserControllerIntegrationTest {
         allUsers.add(user2);
     }
 
-    @Test
-    void testGetAllUsersHasStatus200Ok() throws Exception {
-
-        // Act
-        mvc.perform(get("/api/users"))
-
-                // Assert
-                .andExpect(status().isOk());
-    }
+    /*
+     Database should run to invoke this test
+      */
+//    @Test
+//    void testGetAllUsersHasStatus200Ok() throws Exception {
+//
+//        // Act
+//        mvc.perform(get("/api/users"))
+//
+//                // Assert
+//                .andExpect(status().isOk());
+//    }
 
     @Test
     public void testEndpointUsers() throws Exception {
@@ -85,10 +88,21 @@ public class UserControllerIntegrationTest {
     }
 
     @Test
-    void endPointUsersIsSecured() throws Exception {
+    void endPointGettAllUsersIsSecured() throws Exception {
         mvc.perform(
                 MockMvcRequestBuilders.get("/api/users"))
                 .andExpect(status().isUnauthorized())
+                .andExpect(unauthenticated());
+    }
+
+    /*
+    Database should run to invoke this test
+     */
+    @Test
+    void endPointGetUserByUsernameIsStatusIsNotFound() throws Exception {
+        mvc.perform(
+                MockMvcRequestBuilders.get("/api/users/check-up/test"))
+                .andExpect(status().isNotFound())
                 .andExpect(unauthenticated());
     }
 
