@@ -12,6 +12,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long commentId;
     String message;
+    boolean viewed;
 
     @OneToOne
     @JsonIgnore
@@ -36,6 +37,14 @@ public class Comment {
         this.message = message;
     }
 
+    public boolean isViewed() {
+        return viewed;
+    }
+
+    public void setViewed(boolean viewed) {
+        this.viewed = viewed;
+    }
+
     public Demo getDemo() {
         return demo;
     }
@@ -49,6 +58,7 @@ public class Comment {
         return "Comment{" +
                 "commentId=" + commentId +
                 ", message='" + message + '\'' +
+                ", viewed=" + viewed +
                 ", demo=" + demo +
                 '}';
     }

@@ -33,9 +33,4 @@ INSERT INTO user_role (user_id, role_id) VALUES (3, 1);
 
 INSERT INTO demo (artist, file_name, song_title, user_id) VALUES ('Wouter Kronenberg', 'audio-test-file.mp3', 'Marshmallow Mountains', 1);
 
-INSERT INTO comment (message, demo_id) VALUES ('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere dolorum odio error a doloremque ad quasi illo vitae quod quo al', 1);
-
-
-
-
-
+INSERT INTO comment (message, viewed, demo_id) VALUES ('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere dolorum odio error a doloremque ad quasi illo vitae quod quo al', false, 1);
