@@ -20,7 +20,12 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+    private  String country;
+    private  String facebook;
+    private  String instagram;
+
     @JsonIgnore
+    @Column(updatable=false)
     private String password;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
@@ -123,6 +128,30 @@ this.demos = new ArrayList<>();
         this.demos = demos;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getInstagram() {
+        return instagram;
+    }
+
+    public void setInstagram(String instagram) {
+        this.instagram = instagram;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -131,6 +160,9 @@ this.demos = new ArrayList<>();
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", country='" + country + '\'' +
+                ", facebook='" + facebook + '\'' +
+                ", instagram='" + instagram + '\'' +
                 ", password='" + password + '\'' +
                 ", demos=" + demos +
                 ", roles=" + roles +
