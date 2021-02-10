@@ -2,7 +2,6 @@ package nl.saxofoonleren.dropit.service;
 
 import nl.saxofoonleren.dropit.domain.Demo;
 import nl.saxofoonleren.dropit.domain.User;
-import nl.saxofoonleren.dropit.exceptions.DemoNotFoundException;
 import nl.saxofoonleren.dropit.exceptions.UserNotFoundException;
 import nl.saxofoonleren.dropit.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +45,18 @@ public class UserService {
     }
 
     public void updateUser(User user) {
-        userRepository.save(user);
+        long userId = user.getUserId();
+        Optional<User> existingUser = userRepository.findById(userId);
+        if (!existingUser.isPresent()) {
+            throw new UserNotFoundException(userId);
+        }
+        User updatedUser = existingUser.get();
+        updatedUser.setFirstName(user.getFirstName());
+        updatedUser.setLastName(user.getLastName());
+        updatedUser.setCountry(user.getCountry());
+        updatedUser.setEmail(user.getEmail());
+        updatedUser.setFacebook(user.getFacebook());
+        updatedUser.setInstagram(user.getInstagram());
+        userRepository.save(updatedUser);
     }
 }
