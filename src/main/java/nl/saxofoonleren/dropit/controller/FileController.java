@@ -51,8 +51,7 @@ public class FileController {
         InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
 
         HttpHeaders headers = new HttpHeaders();
-//        headers.add("Content-Disposition",
-//                String.format("attachment; filename=\"%s\"", file.getName()));
+
         headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
         headers.add("Pragma", "no-cache");
         headers.add("Expires", "0");

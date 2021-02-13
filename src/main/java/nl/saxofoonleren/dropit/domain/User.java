@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 @Entity
@@ -15,8 +17,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long userId;
     private String username;
+    private String firstName;
+    private String lastName;
     private String email;
+    private  String country;
+    private  String facebook;
+    private  String instagram;
+
     @JsonIgnore
+    @Column(updatable=false)
     private String password;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
@@ -30,7 +39,7 @@ public class User {
     private Set<Role> roles;
 
     public User() {
-
+this.demos = new ArrayList<>();
     }
 
     public void addDemo(Demo demo) {
@@ -49,6 +58,10 @@ public class User {
         this.password = password;
     }
 
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
     public long getUserId() {
         return userId;
     }
@@ -61,11 +74,33 @@ public class User {
         this.username = username;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
+        email = email.toLowerCase();
+        email = email.replaceAll(" ", "");
         this.email = email;
     }
 
@@ -93,12 +128,41 @@ public class User {
         this.demos = demos;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getInstagram() {
+        return instagram;
+    }
+
+    public void setInstagram(String instagram) {
+        this.instagram = instagram;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "userId=" + userId +
                 ", username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", country='" + country + '\'' +
+                ", facebook='" + facebook + '\'' +
+                ", instagram='" + instagram + '\'' +
                 ", password='" + password + '\'' +
                 ", demos=" + demos +
                 ", roles=" + roles +

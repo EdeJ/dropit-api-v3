@@ -2,19 +2,16 @@ package nl.saxofoonleren.dropit.payload.request;
 
 import javax.persistence.Entity;
 
-public class ReviewRequest {
+public class CommentRequest {
 
     private long commentId;
     private String message;
+    private boolean viewed;
     private long demoId;
 
     public long getCommentId() {
         return commentId;
     }
-
-//    public void setCommentId(long commentId) {
-//        this.commentId = commentId;
-//    }
 
     public String getMessage() {
         return message;
@@ -24,11 +21,29 @@ public class ReviewRequest {
         this.message = message;
     }
 
+    public boolean isViewed() {
+        return viewed;
+    }
+
+    public void setViewed(boolean viewed) {
+        this.viewed = viewed;
+    }
+
     public long getDemoId() {
         return demoId;
     }
 
     public void setDemoId(long demoId) {
         this.demoId = demoId;
+    }
+
+    @Override
+    public String toString() {
+        return "CommentRequest{" +
+                "commentId=" + commentId +
+                ", message='" + message + '\'' +
+                ", viewed=" + viewed +
+                ", demoId=" + demoId +
+                '}';
     }
 }
