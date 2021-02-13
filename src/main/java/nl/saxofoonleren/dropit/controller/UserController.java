@@ -31,6 +31,13 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
+    @PutMapping("/{userId}")
+    public ResponseEntity<?> getUserById(@PathVariable long userId, @RequestBody User user) throws IOException {
+        System.out.println(user);
+        userService.updateUser(user);
+        return ResponseEntity.ok(user);
+    }
+
     @GetMapping("/{userId}/demos")
     public ResponseEntity<?> getDemosByUserId(@PathVariable("userId") long userId) throws IOException {
         List<Demo> demos = userService.getDemosByUserId(userId);
