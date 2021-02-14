@@ -34,7 +34,6 @@ public class AuthController {
 
     @PostMapping("/signin")
     public ResponseEntity<JwtResponse> authenticateUser(@RequestBody LoginRequest loginRequest) {
-        System.out.println(loginRequest.getUsername());
         return authorizationService.authenticateUser(loginRequest);
     }
 
