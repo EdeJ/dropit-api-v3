@@ -10,6 +10,9 @@ public class LoginRequest {
     }
 
     public void setUsername(String username) {
+        username = username.toLowerCase();
+        username = username.replaceAll(" ", "");
+        System.out.println();
         this.username = username;
     }
 
