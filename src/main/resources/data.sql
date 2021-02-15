@@ -31,6 +31,18 @@ INSERT INTO app_user (username, email, password) VALUES ('test@test.nl', 'test@x
 INSERT INTO user_role (user_id, role_id) VALUES (3, 3);
 INSERT INTO user_role (user_id, role_id) VALUES (3, 1);
 
+INSERT INTO app_user (username, email, password) VALUES ('user@dropit.com', 'user@dropit.com', '$2a$10$2JY2g4Jbmz65ch664BHONOW19LxF3tH94zwiL9ctL.vI5U5bAEvf6');
+INSERT INTO user_role (user_id, role_id) VALUES (4, 1);
+
+INSERT INTO app_user (username, email, password) VALUES ('admin@dropit.com', 'admin@dropit.com', '$2a$10$2JY2g4Jbmz65ch664BHONOW19LxF3tH94zwiL9ctL.vI5U5bAEvf6');
+INSERT INTO user_role (user_id, role_id) VALUES (5, 3);
+
 INSERT INTO demo (artist, file_name, song_title, user_id) VALUES ('Wouter Kronenberg', 'audio-test-file.mp3', 'Marshmallow Mountains', 1);
+
+-- INSERT INTO demo (artist, file_name, song_title, user_id) VALUES ('Wouter Kronenberg', 'audio-test-file.mp3', 'Marshmallow Mountains', 1);
+INSERT INTO demo (artist, file_name, song_title, user_id) VALUES ('Daft Punk', '4796f2ba-d56f-49e3-88dd-f7796585d877.mp3', 'Within', 4);
+
+-- INSERT INTO demo (artist, file_name, song_title, user_id) VALUES ('Wouter Kronenberg', 'audio-test-file.mp3', 'Marshmallow Mountains', 1);
+-- INSERT INTO demo (artist, file_name, song_title, user_id) VALUES ('Wouter Kronenberg', 'audio-test-file.mp3', 'Marshmallow Mountains', 1);
 
 INSERT INTO comment (message, viewed, demo_id) VALUES ('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere dolorum odio error a doloremque ad quasi illo vitae quod quo al', false, 1);
