@@ -5,7 +5,7 @@ INSERT INTO role(name) VALUES ('ROLE_ADMIN');
 -- USERNAME: emieldejong@xs4all.nl
 -- PASSWORD: password
 -- ROLES: user
-INSERT INTO app_user (username, email, password) VALUES ('emieldejong@xs4all.nl', 'emieldejong@xs4all.nl', '$2a$10$2JY2g4Jbmz65ch664BHONOW19LxF3tH94zwiL9ctL.vI5U5bAEvf6');
+INSERT INTO app_user (username, first_name, last_name, email, password) VALUES ('emieldejong@xs4all.nl', 'Emiel', 'de Jong', 'emieldejong@xs4all.nl', '$2a$10$2JY2g4Jbmz65ch664BHONOW19LxF3tH94zwiL9ctL.vI5U5bAEvf6');
 INSERT INTO user_role (user_id, role_id) VALUES (1, 1);
 
 -- USERNAME: test@test.nl
@@ -18,19 +18,19 @@ INSERT INTO user_role (user_id, role_id) VALUES (2, 1);
 -- USERNAME: user@dropit.com
 -- PASSWORD: password
 -- ROLES: user
-INSERT INTO app_user (username, email, password) VALUES ('user@dropit.com', 'user@dropit.com', '$2a$10$2JY2g4Jbmz65ch664BHONOW19LxF3tH94zwiL9ctL.vI5U5bAEvf6');
+INSERT INTO app_user (username, first_name, last_name, country, email, password, instagram) VALUES ('user@dropit.com', 'Anakin', 'Skywalker', 'Netherlands', 'user@dropit.com', '$2a$10$2JY2g4Jbmz65ch664BHONOW19LxF3tH94zwiL9ctL.vI5U5bAEvf6', 'https://www.instagram.com/starwars/');
 INSERT INTO user_role (user_id, role_id) VALUES (3, 1);
 
 -- USERNAME: admin@dropit.com
 -- PASSWORD: password
 -- ROLES: admin
-INSERT INTO app_user (username, email, password) VALUES ('admin@dropit.com', 'admin@dropit.com', '$2a$10$2JY2g4Jbmz65ch664BHONOW19LxF3tH94zwiL9ctL.vI5U5bAEvf6');
+INSERT INTO app_user (username, first_name, last_name, email, country, password, facebook) VALUES ('admin@dropit.com', 'Charlie', 'Parker', 'US', 'admin@dropit.com', '$2a$10$2JY2g4Jbmz65ch664BHONOW19LxF3tH94zwiL9ctL.vI5U5bAEvf6', 'https://www.facebook.com/charlieparkermusic');
 INSERT INTO user_role (user_id, role_id) VALUES (4, 3);
 
 -- USERNAME: elvispresley@gmail.com
 -- PASSWORD: password
 -- ROLES: user
-INSERT INTO app_user (username, email, password) VALUES ('elvispresley@gmail.com', 'elvispresley@gmail.com', '$2a$10$2JY2g4Jbmz65ch664BHONOW19LxF3tH94zwiL9ctL.vI5U5bAEvf6');
+INSERT INTO app_user (username, first_name, last_name, email, password, facebook) VALUES ('elvispresley@gmail.com', 'Elvis', 'Presley', 'elvispresley@gmail.com', '$2a$10$2JY2g4Jbmz65ch664BHONOW19LxF3tH94zwiL9ctL.vI5U5bAEvf6', 'https://www.facebook.com/elvis');
 INSERT INTO user_role (user_id, role_id) VALUES (5, 1);
 
 INSERT INTO demo (artist, file_name, song_title, user_id) VALUES ('Daft Punk', '3a2516c8-64d3-41d0-8157-e8436175e52f.mp3', 'Doin'' It Right', 1);
@@ -61,9 +61,9 @@ INSERT INTO comment (message, viewed, demo_id) VALUES ('“Janie Runaway” is a
 
 The Dropit Team', false, 6);
 
-INSERT INTO comment (message, viewed, demo_id) VALUES ('“The rhythm track fits perfectly and the lyrics display the typical biting humor you’d expect on a Becker solo track.
+INSERT INTO comment (message, viewed, demo_id) VALUES ('The rhythm track fits perfectly and the lyrics display the typical biting humor you’d expect on a Becker solo track.
 
-Add to that a tight and funky groove forged by Becker’s bass and drummer Keith Carlock. Additionally, Walt Weiskopf, Steely Dan’s touring tenor man since 2003, delivers a lustful sax solo to help things along.
+Add to that a tight and funky groove forged by Becker’s bass and drummer Keith Carlock. Additionally, Walt Weiskopf, Steely Dan’s touring tenor man since 2003, delivers a lustful sax solo to help things along. just a fantastic track!
 
 The dropit Team', false, 2);
 
