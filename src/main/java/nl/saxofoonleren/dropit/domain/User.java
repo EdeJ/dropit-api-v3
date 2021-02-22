@@ -42,6 +42,12 @@ public class User {
 this.demos = new ArrayList<>();
     }
 
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
     public void addDemo(Demo demo) {
         demo.setUser(this);
         this.demos.add(demo);
@@ -50,12 +56,6 @@ this.demos = new ArrayList<>();
     public void removeDemo(Demo demo) {
         demo.setUser(null);
         this.demos.remove(demo);
-    }
-
-    public User(String username, String email, String password) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
     }
 
     public void setUserId(long userId) {

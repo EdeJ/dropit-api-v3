@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>810</x>
+      <y>290</y>
+      <w>300</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>Demo
+--
+-id: Long
+-user: User
+-fileName: String
+-songTitle: String
+-artist: String
+--
++getId()
++getUser(): User
++setUser()
++getFileName()
++setFileName()
++getSongTitle()
++setSongTitel()
++getArtist()
++setArtist()
++getComment():Comment
++setComment(comment: Comment): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>460</x>
+      <y>290</y>
+      <w>240</w>
+      <h>620</h>
+    </coordinates>
+    <panel_attributes>User
+--
+-userId: Long
+-username: string
+-firstName: String
+-lastName: String
+-email: String
+-country: String
+-facebook: String
+-instagram: String
+-password: String
+-demos: List&lt;Demos&gt;
+-Roles: List&lt;Roles&gt;
+--
++addDemo(demo :Demo) : void
++removeDemo(demo: Demo) : void
++setUserId()
++getUserId()
++getUsername()
++setUserName()
++getFirstName()
++setFirstName()
++getLastName()
++setLastName()
++getFullName()
++getEmail()
++setEmail()
++getPassword()
++setPassword()
++getRoles()
++setRoles()
++getDemos()
++setDemos()
++getCountry()
++setCountry()
++getFacebook()
++setFacebook()
++getInstagram()
++setInstagram()
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>690</x>
+      <y>350</y>
+      <w>140</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=0..*
+</panel_attributes>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>810</x>
+      <y>660</y>
+      <w>300</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>Comment
+--
+-commentId: Long
+-message: String
+-viewed: boolean
+-demo: Demo
+--
++getCommetnId()
++setCommetnId()
++getMessage()
++setMessage()
++isViewed()
++setViewed()
++getDemo()
++setDemo()
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>940</x>
+      <y>590</y>
+      <w>50</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>460</x>
+      <y>90</y>
+      <w>180</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Role
+--
+-id: long
+-name: Erole
+--
++getId()
++getName(): ERole
++setName(name:ERole)
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>90</y>
+      <w>180</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+ERole
+--
+ROLE_USER
+ROLE_ADMINISTRATOR
+ROLE_ADMIN
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>200</y>
+      <w>50</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..*
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+</diagram>
