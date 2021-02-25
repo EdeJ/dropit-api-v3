@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/home")
 public class HomeController {
 
+    // this end point is only used to wake op the sleeping heroku server
     @GetMapping("/wakeup")
     public ResponseEntity<?>home() {
             return ResponseEntity.ok("waking up");
