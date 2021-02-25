@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/home")
+@RequestMapping("api/home")
 public class HomeController {
 
     @GetMapping("/wake-up")
