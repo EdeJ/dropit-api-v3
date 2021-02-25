@@ -18,7 +18,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "https://dropit.netlify.app/", maxAge = 3600)
 @RestController
 @RequestMapping("/api/files")
 public class FileController {
