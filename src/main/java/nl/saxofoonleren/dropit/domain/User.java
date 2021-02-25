@@ -1,12 +1,10 @@
 package nl.saxofoonleren.dropit.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Set;
 
 @Entity
@@ -34,7 +32,7 @@ public class User {
 
     @ManyToMany
     @JoinTable(name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id"),      //TODO check dit!
+            joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
@@ -99,8 +97,10 @@ this.demos = new ArrayList<>();
     }
 
     public void setEmail(String email) {
-        email = email.toLowerCase();
-        email = email.replaceAll(" ", "");
+        if(email != null) {
+            email = email.toLowerCase();
+            email = email.replaceAll(" ", "");
+        }
         this.email = email;
     }
 

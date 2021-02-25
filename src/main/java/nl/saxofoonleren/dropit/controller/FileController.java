@@ -2,7 +2,6 @@ package nl.saxofoonleren.dropit.controller;
 
 import nl.saxofoonleren.dropit.domain.Demo;
 import nl.saxofoonleren.dropit.domain.User;
-import nl.saxofoonleren.dropit.repository.UserRepository;
 import nl.saxofoonleren.dropit.service.FileService;
 import nl.saxofoonleren.dropit.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

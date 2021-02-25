@@ -6,6 +6,7 @@ import nl.saxofoonleren.dropit.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class UserController {
     UserService userService;
 
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> getAllUsers() throws IOException {
         List<User> users = userService.getAllUsers();
         return ResponseEntity.ok(users);
@@ -32,8 +34,8 @@ public class UserController {
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<?> getUserById(@PathVariable long userId, @RequestBody User user) throws IOException {
-        System.out.println(user);
+    public ResponseEntity<?> updateUserById(@PathVariable long userId, @RequestBody User user) throws IOException {
+        user.setUserId(userId);
         userService.updateUser(user);
         return ResponseEntity.ok(user);
     }
@@ -51,6 +53,5 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(user.getEmail(), HttpStatus.OK);
-        //TODO nog even goed controleren
     }
 }

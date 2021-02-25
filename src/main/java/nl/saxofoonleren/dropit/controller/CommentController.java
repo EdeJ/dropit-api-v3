@@ -7,6 +7,7 @@ import nl.saxofoonleren.dropit.service.DemoService;
 import nl.saxofoonleren.dropit.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -24,6 +25,7 @@ public class CommentController {
 
 
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> getAllComments() throws IOException {
         return ResponseEntity.ok(commentService.getAllComments());
     }
@@ -43,9 +45,8 @@ public class CommentController {
         return ResponseEntity.ok(comment);
     }
 
-    @PutMapping(value = "/{commentId}")
+    @PutMapping("/{commentId}")
     public ResponseEntity<?> updateComment(@PathVariable("commentId") long commentId,@RequestBody CommentRequest commentRequest) {
-        System.out.println(commentRequest);
         Demo demo = demoService.getDemoById(commentRequest.getDemoId());
         Comment comment = new Comment();
         comment.setCommentId(commentId);
