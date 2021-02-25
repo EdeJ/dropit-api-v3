@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
-@CrossOrigin(origins = "https://dropit.netlify.app/", maxAge = 3600)
+@CrossOrigin(origins = "https://dropit.netlify.app", maxAge = 3600)
 @RestController
 @RequestMapping("/api/comments")
 public class CommentController {

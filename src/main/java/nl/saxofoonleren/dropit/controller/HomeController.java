@@ -3,7 +3,7 @@ package nl.saxofoonleren.dropit.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "https://dropit.netlify.app/", maxAge = 3600)
+@CrossOrigin(origins = "https://dropit.netlify.app", maxAge = 3600)
 @RestController
 @RequestMapping("api/home")
 public class HomeController {
