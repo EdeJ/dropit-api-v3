@@ -17,19 +17,16 @@ public class ExceptionController {
 
     @ExceptionHandler(value = DemoNotFoundException.class)
     public ResponseEntity<Object> exception(DemoNotFoundException exception) {
-        System.out.println(exception);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
     }
 
     @ExceptionHandler(value = UserNotFoundException.class)
     public ResponseEntity<Object> exception(UserNotFoundException exception) {
-        System.out.println(exception);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
     }
 
     @ExceptionHandler(MaxUploadSizeExceededException.class)
     public ResponseEntity<Object> exception(MaxUploadSizeExceededException exception) {
-        System.out.println(exception.getMessage());
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(exception.getMessage());
     }
 

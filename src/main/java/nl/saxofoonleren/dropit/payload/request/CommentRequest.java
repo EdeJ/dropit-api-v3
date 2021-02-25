@@ -1,10 +1,11 @@
 package nl.saxofoonleren.dropit.payload.request;
 
-import javax.persistence.Entity;
+import javax.persistence.Lob;
 
 public class CommentRequest {
 
     private long commentId;
+    @Lob
     private String message;
     private boolean viewed;
     private long demoId;

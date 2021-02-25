@@ -26,7 +26,6 @@ public class CommentService {
 
         Comment comment = commentRepository.findById(id).orElse(null);
         if(comment == null) throw new CommentNotFoundException(id);
-        System.out.println(comment.getDemo());
         return comment;
     }
 
