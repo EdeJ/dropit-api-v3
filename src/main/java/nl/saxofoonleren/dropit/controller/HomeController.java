@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/home")
 public class HomeController {
 
-    @GetMapping("/wakeup")
-    public ResponseEntity<?>home() {
-            return ResponseEntity.ok("waking up");
+    @GetMapping("/wake-up")
+    public ResponseEntity<?>wakeUp() {
+            return ResponseEntity.ok("waking up!");
     }
 
 }
